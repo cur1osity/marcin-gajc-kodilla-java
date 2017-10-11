@@ -17,13 +17,15 @@ public class TestingMain {
 
         System.out.println();
 
-        Calculator calculator = new Calculator(10, 5);
+        Calculator calculator = new Calculator();
+
+        int results = 15;
+        int a = 10;
+        int b = 5;
 
         System.out.println("Testing addition");
 
-        int results = 15;
-
-        if (results == calculator.addition()) {
+        if (results == calculator.addition(a,b)) {
             System.out.println("test OK");
         }
         else {
@@ -34,7 +36,7 @@ public class TestingMain {
 
         results = 5;
 
-        if (results == calculator.subtraction()) {
+        if (results == calculator.subtraction(a,b)) {
             System.out.println("test OK");
         }
         else {
