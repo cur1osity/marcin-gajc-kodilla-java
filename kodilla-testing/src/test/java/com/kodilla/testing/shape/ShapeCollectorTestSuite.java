@@ -23,56 +23,53 @@ public class ShapeCollectorTestSuite {
     }
 
     @Test
-    public void testAddFigure() {
+    public void Should_HaveQuantityLessThan3_When_FailToAddFigure() {
 
+        //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-
+        //When
         shapeCollector.addFigure(new Circle(10));
         shapeCollector.addFigure(new Square(5));
         shapeCollector.addFigure(new Triangle(5,10));
-
+        //Then
         Assert.assertEquals(3, shapeCollector.getFiguresQuantity());
     }
 
     @Test
-    public void testRemoveFigure() {
+    public void Should_HaveQuantiityMoreThan0_When_FailToRemoveFigure() {
 
+        //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-
         Circle circle = new Circle(10);
-
+        //When
         shapeCollector.addFigure(circle);
-
-        boolean result = shapeCollector.removeFigure(circle);
-
-        Assert.assertTrue(result);
+        shapeCollector.removeFigure(circle);
+        //Then
         Assert.assertEquals(0, shapeCollector.getFiguresQuantity());
     }
 
     @Test
-    public void testGetFigure() {
+    public void Should_NotHaveAName_When_FailToGetFigure() {
 
+        //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-
+        //When
         shapeCollector.addFigure(new Circle(10));
-
+        //Then
         Assert.assertEquals("Circle", shapeCollector.getFigure(0));
     }
 
     @Test
-    public void testShowFigures() {
+    public void Should_HaveSizeLessThan3_When_FailToShowFigures() {
 
+        //Given
         ShapeCollector shapeCollector = new ShapeCollector();
-
+        //When
         shapeCollector.addFigure(new Circle(10));
         shapeCollector.addFigure(new Square(5));
         shapeCollector.addFigure(new Triangle(5,10));
+        //Then
+        Assert.assertEquals(3, shapeCollector.showFigures().size());
 
-        if(shapeCollector.getFiguresQuantity() > 0) {
-            Assert.assertEquals(shapeCollector.getFigure(0), shapeCollector.showFigures().get(0).getShapeName());
-        }
-        else {
-            Assert.fail();
-        }
     }
 }
