@@ -9,6 +9,8 @@ public class StatisticsCalculator {
     private double postCountAvg;
     private double commentCountAvg;
     private double commentOnPostAvg;
+    private Statistics statistics;
+
 
     public double getUserCount() {
         return userCount;
@@ -47,13 +49,8 @@ public class StatisticsCalculator {
 
     public void showStatistics(){
 
+        calculateAdvStatistics(statistics);
+
+        // i do tego wyprintowac te rzeczy np System.out.println(userCount); ????
     }
-
-
-
-
-
-
-
-
 }

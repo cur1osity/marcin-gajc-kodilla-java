@@ -64,4 +64,5 @@ public class StatisticsTestSuite {
         Assert.assertEquals(100, statisticCalculator.getUserCount(),0);
 
     }
+
 }
