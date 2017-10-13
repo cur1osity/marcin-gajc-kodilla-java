@@ -34,26 +34,18 @@ public class StatisticsCalculator {
         return commentOnPostAvg;
     }
 
-    public void calculateAdvStatistics(Statistics statistics){
+    public void calculateAdvStatistics(Statistics statistics) {
 
-    commentCount = statistics.commentsCount();
-    userCount = statistics.usersNames().size();
-    postCount = statistics.postsCount();
-    postCountAvg = postCount/userCount;
-    commentCountAvg = commentCount/userCount;
-    commentOnPostAvg = postCount/commentCount;
-
-    }
-
-    public void showStatistics(){
+        commentCount = statistics.commentsCount();
+        userCount = statistics.usersNames().size();
+        postCount = statistics.postsCount();
+        postCountAvg = postCount / userCount;
+        commentCountAvg = commentCount / userCount;
+        commentOnPostAvg = postCount / commentCount;
 
     }
 
+    public void showStatistics() {
 
-
-
-
-
-
-
+    }
 }

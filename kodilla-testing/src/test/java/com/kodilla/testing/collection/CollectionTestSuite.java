@@ -10,17 +10,10 @@ import java.util.ArrayList;
 public class CollectionTestSuite {
 
     private OddNumbersExterminator oddNumbersExterminator;
-    private ArrayList<Integer> numbers1;
-    private ArrayList<Integer> numbers2;
+    private ArrayList<Integer> numbers;
 
     @Before
-    public void setup() {
-        numbers1 = new ArrayList<>();
-        numbers2 = new ArrayList<>();
-        numbers2.add(3);
-        numbers2.add(1);
-        numbers2.add(4);
-        numbers2.add(6);
+    public void startOfTest() {
 
         System.out.println("Starting test...");
     }
@@ -34,9 +27,11 @@ public class CollectionTestSuite {
     @Test
     public void testOddNumbersExterminatorEmptyList() {
 
+        numbers = new ArrayList<>();
+
         oddNumbersExterminator = new OddNumbersExterminator();
 
-        ArrayList<Integer> numberEven = oddNumbersExterminator.exterminate(numbers1);
+        ArrayList<Integer> numberEven = oddNumbersExterminator.exterminate(numbers);
 
         Assert.assertTrue(numberEven.isEmpty());
     }
@@ -44,9 +39,15 @@ public class CollectionTestSuite {
     @Test
     public void testOddNumbersExterminatorNormalList() {
 
+        numbers = new ArrayList<>();
+        numbers.add(3);
+        numbers.add(1);
+        numbers.add(4);
+        numbers.add(6);
+
         oddNumbersExterminator = new OddNumbersExterminator();
 
-        ArrayList<Integer> numberEven = oddNumbersExterminator.exterminate(numbers2);
+        ArrayList<Integer> numberEven = oddNumbersExterminator.exterminate(numbers);
 
         for (Integer number : numberEven) {
             Assert.assertTrue(number % 2 == 0);
