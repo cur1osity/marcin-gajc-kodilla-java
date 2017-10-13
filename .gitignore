@@ -23,3 +23,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+/kodilla-testing/out/
+/out/
+src/main/resources/static/
+src/main/resources/templates/
