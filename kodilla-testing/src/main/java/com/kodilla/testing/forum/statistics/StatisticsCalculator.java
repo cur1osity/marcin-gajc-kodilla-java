@@ -1,7 +1,7 @@
 package com.kodilla.testing.forum.statistics;
 
 
-public class StatisticCalculator {
+public class StatisticsCalculator {
 
     private double userCount;
     private double postCount;
@@ -9,8 +9,6 @@ public class StatisticCalculator {
     private double postCountAvg;
     private double commentCountAvg;
     private double commentOnPostAvg;
-    private Statistics statistics;
-
 
     public double getUserCount() {
         return userCount;
@@ -47,12 +45,9 @@ public class StatisticCalculator {
 
     }
 
-//    public void showStatistics(){
-//
-//        StatisticCalculator statisticCalculator = new StatisticCalculator();
-//        statisticCalculator.calculateAdvStatistics(Statistics statistics);
-//
-//    }
+    public void showStatistics(){
+
+    }
 
 
 

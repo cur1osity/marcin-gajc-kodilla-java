@@ -16,7 +16,7 @@ public class StatisticsTestSuite {
 
         Statistics statisticsMock = mock(Statistics.class);
 
-        StatisticCalculator statisticCalculator = new StatisticCalculator();
+        StatisticsCalculator statisticCalculator = new StatisticsCalculator();
 
         // gdy liczba postów = 0
 
