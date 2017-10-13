@@ -90,7 +90,7 @@ public class BookDirectoryTestSuite {
     }
 
     @Test
-    public void Should_haveExactListSize_When_() {
+    public void Should_haveExpectedListSize_When_ListBooksInHandsOfForGivenUserIsCreated() {
 
         // Given
 
