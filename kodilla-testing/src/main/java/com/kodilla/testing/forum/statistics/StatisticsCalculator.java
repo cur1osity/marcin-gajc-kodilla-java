@@ -9,6 +9,8 @@ public class StatisticsCalculator {
     private double postCountAvg;
     private double commentCountAvg;
     private double commentOnPostAvg;
+    private Statistics statistics;
+
 
     public double getUserCount() {
         return userCount;
@@ -34,18 +36,21 @@ public class StatisticsCalculator {
         return commentOnPostAvg;
     }
 
-    public void calculateAdvStatistics(Statistics statistics) {
+    public void calculateAdvStatistics(Statistics statistics){
 
         commentCount = statistics.commentsCount();
         userCount = statistics.usersNames().size();
         postCount = statistics.postsCount();
-        postCountAvg = postCount / userCount;
-        commentCountAvg = commentCount / userCount;
-        commentOnPostAvg = postCount / commentCount;
+        postCountAvg = postCount/userCount;
+        commentCountAvg = commentCount/userCount;
+        commentOnPostAvg = postCount/commentCount;
 
     }
 
-    public void showStatistics() {
+    public void showStatistics(){
 
+        calculateAdvStatistics(statistics);
+
+        // i do tego wyprintowac te rzeczy np System.out.println(userCount); ????
     }
 }

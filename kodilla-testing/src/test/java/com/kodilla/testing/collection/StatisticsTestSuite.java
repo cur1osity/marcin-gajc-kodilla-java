@@ -1,5 +1,7 @@
-package com.kodilla.testing.forum.statistics;
+package com.kodilla.testing.collection;
 
+import com.kodilla.testing.forum.statistics.Statistics;
+import com.kodilla.testing.forum.statistics.StatisticsCalculator;
 import org.junit.Assert;
 import org.junit.Test;
 
