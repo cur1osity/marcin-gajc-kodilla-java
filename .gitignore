@@ -1,8 +1,7 @@
 .gradle
-/build/
+build/
 out/
 !gradle/wrapper/gradle-wrapper.jar
-
 
 ### IntelliJ IDEA ###
 .idea
@@ -10,7 +9,6 @@ out/
 *.iml
 *.ipr
 
-kodilla-testing/build/
-
 src/main/resources/static/
 src/main/resources/templates/
+
