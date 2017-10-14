@@ -1,15 +1,7 @@
 .gradle
-/build/
-/out/
+build/
+out/
 !gradle/wrapper/gradle-wrapper.jar
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
 
 ### IntelliJ IDEA ###
 .idea
@@ -17,13 +9,10 @@
 *.iml
 *.ipr
 
-### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
 src/main/resources/static/
 src/main/resources/templates/
-/kodilla-testing/out/
+
+/kodilla-testing/src/main/java/com/kodilla/testing/collection/
+/kodilla-testing/src/test/java/com/kodilla/testing/collection/
+/kodilla-testing/src/test/java/com/kodilla/testing/forum/tdd/
+/kodilla-testing/src/main/java/com/kodilla/testing/forum/
