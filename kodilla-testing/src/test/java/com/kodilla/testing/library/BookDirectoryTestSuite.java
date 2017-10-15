@@ -90,35 +90,50 @@ public class BookDirectoryTestSuite {
     }
 
     @Test
-    public void Should_haveExpectedListSize_When_ListBooksInHandsOfForGivenUserIsCreated() {
+    public void Should_Have0ElementsListSize_When_LibraryUserHave0Books() {
 
         // Given
-
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
-        LibraryUser ZeroBookUser = new LibraryUser("name1","lastname1","123");
-        LibraryUser OneBookUser = new LibraryUser("name2","lastname2","124");
-        LibraryUser FiveBookUser = new LibraryUser("name3","lastname3","125");
-
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
-        List<Book> resultListOf0Books = new ArrayList<>();
-        List<Book> resultListOf1Book = generateListOfNBooks(1);
-        List<Book> resultListOf5Books = generateListOfNBooks(5);
-
-        when(libraryDatabaseMock.listBooksInHandsOf(ZeroBookUser)).thenReturn(resultListOf0Books);
-        when(libraryDatabaseMock.listBooksInHandsOf(OneBookUser)).thenReturn(resultListOf1Book);
-        when(libraryDatabaseMock.listBooksInHandsOf(FiveBookUser)).thenReturn(resultListOf5Books);
+        LibraryUser libraryUser = new LibraryUser("name","lastname","123");
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(generateListOfNBooks(0));
 
         // When
-
-        List<Book> theListOfBooksfor0 = bookLibrary.listBooksInHandsOf(ZeroBookUser);
-        List<Book> theListOfBooksfor1 = bookLibrary.listBooksInHandsOf(OneBookUser);
-        List<Book> theListOfBooksfor5 = bookLibrary.listBooksInHandsOf(FiveBookUser);
+        List<Book> theListOfBooks = bookLibrary.listBooksInHandsOf(libraryUser);
 
         // Then
+        assertEquals(0, theListOfBooks.size());
+    }
 
-        assertEquals(0, theListOfBooksfor0.size());
-        assertEquals(1, theListOfBooksfor1.size());
-        assertEquals(5, theListOfBooksfor5.size());
+    @Test
+    public void Should_Have1ElementListSize_When_LibraryUserHave1Book() {
 
+        // Given
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        LibraryUser libraryUser = new LibraryUser("name","lastname","123");
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(generateListOfNBooks(1));
+
+        // When
+        List<Book> theListOfBooks = bookLibrary.listBooksInHandsOf(libraryUser);
+
+        // Then
+        assertEquals(1, theListOfBooks.size());
+    }
+
+    @Test
+    public void Should_Have5ElementsListSize_When_LibraryUserHave5Books() {
+
+        // Given
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        LibraryUser libraryUser = new LibraryUser("name","lastname","123");
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(generateListOfNBooks(5));
+
+        // When
+        List<Book> theListOfBooks = bookLibrary.listBooksInHandsOf(libraryUser);
+
+        // Then
+        assertEquals(5, theListOfBooks.size());
     }
 }
