@@ -14,6 +14,9 @@ public class WeatherForecastTestSuite {
     public void testCalculateForecastWithMock() {
         //Given
         Temperatures temperaturesMock = mock(Temperatures.class);
+
+        WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
+
         HashMap<Integer, Double> temperaturesMap = new HashMap<>();
         temperaturesMap.put(0, 25.5);
         temperaturesMap.put(1, 26.2);
@@ -21,8 +24,6 @@ public class WeatherForecastTestSuite {
         temperaturesMap.put(3, 25.2);
         temperaturesMap.put(4, 26.1);
         when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
-
-        WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
 
         //When
         int quantityOfSensors = weatherForecast.calculateForecast().size();
