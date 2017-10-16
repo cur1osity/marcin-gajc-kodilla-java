@@ -10,7 +10,7 @@ public class BookLibrary {
         this.libraryDatabase = libraryDatabase;
     }
 
-    public List<Book> listBooksWithCondition(String titleFragment) {
+    public List<Book> listBooksWithConditionX(String titleFragment) {
         List<Book> bookList = new ArrayList<>();
         if (titleFragment.length() < 3)
             return bookList;
@@ -22,7 +22,7 @@ public class BookLibrary {
         return bookList;
     }
 
-    public  List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
+    public  List<Book> listBooksInHandsOfX(LibraryUser libraryUser) {
 
         List<Book> resultList = libraryDatabase.listBooksInHandsOf(libraryUser);
 
