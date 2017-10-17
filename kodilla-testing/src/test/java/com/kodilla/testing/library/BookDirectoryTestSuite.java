@@ -111,10 +111,10 @@ public class BookDirectoryTestSuite {
                 .thenReturn(resultListOf10Books);
 
         // When
-        List<Book> theListOfBooks10 = bookLibrary.listBooksWithConditionX("An");
+        List<Book> theListOfBooks10 = bookLibrary.listBooksWithConditionX("Any");
 
         // Then
-        assertEquals(0, theListOfBooks10.size());
+        assertEquals(10, theListOfBooks10.size());
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
     }
 
