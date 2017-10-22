@@ -2,10 +2,11 @@ package com.kodilla.stream.portfolio;
 
 import org.junit.Assert;
 import org.junit.Test;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+import static java.time.temporal.ChronoUnit.DAYS;
 import static java.util.stream.Collectors.toList;
 
 public class BoardTestSuite {
@@ -138,4 +139,58 @@ public class BoardTestSuite {
         Assert.assertEquals(2, longTasks);
     }
 
+    @Test
+    public void testAddTaskListAverageWorkingOnTask() {
+
+        //Given
+        Board project = prepareTestData();
+
+        //When
+
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+
+        long numberOfDays =  project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(t -> t.getTasks().stream())
+                .map(t -> t.getCreated())
+                .map(t -> t.until(LocalDate.now(), DAYS))
+                .mapToLong(Long::longValue)
+                .sum();
+
+        long numberOftasks =  project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(t -> t.getTasks().stream())
+                .map(t -> t.getCreated())
+                .count();
+
+        //Then
+
+        Assert.assertEquals(10,numberOfDays/numberOftasks);
+
+    }
+
+    @Test
+    public void testAddTaskListAverageWorkingOnTaskWithStar() {
+
+        //Given
+        Board project = prepareTestData();
+
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+
+        double averageDays =  project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(t -> t.getTasks().stream())
+                .map(t -> t.getCreated())
+                .map(t -> t.until(LocalDate.now(), DAYS))
+                .mapToDouble(Long::doubleValue)
+                .average()
+                .getAsDouble();
+
+        //Then
+        Assert.assertEquals(10,averageDays,0.001);
+
+    }
 }
