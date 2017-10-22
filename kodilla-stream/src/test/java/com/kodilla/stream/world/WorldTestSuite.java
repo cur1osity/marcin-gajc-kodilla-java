@@ -14,7 +14,6 @@ public class WorldTestSuite {
 
         // Given
         // Create continents and add countries
-
         List<Country> europe = new ArrayList<>();
 
         europe.add(new Country("Poland",new BigDecimal("40000000")));
@@ -26,17 +25,14 @@ public class WorldTestSuite {
         asia.add(new Country("Japan",new BigDecimal("100000000")));
         asia.add(new Country("China",new BigDecimal("1000000000")));
 
-        // when
-
         World world = new World();
-
         world.getContinents().add(new Continent(asia));
         world.getContinents().add(new Continent(europe));
 
-
-        //then
-
+        //When
         BigDecimal expectedPeople = new BigDecimal("1320000000");
+
+        //Then
         Assert.assertEquals(expectedPeople, world.getPeopleQuantity());
 
     }
