@@ -29,11 +29,13 @@ public class WorldTestSuite {
         world.getContinents().add(new Continent(asia));
         world.getContinents().add(new Continent(europe));
 
-        //When
         BigDecimal expectedPeople = new BigDecimal("1320000000");
 
+        //When
+        BigDecimal peopleQuantity = world.getPeopleQuantity();
+
         //Then
-        Assert.assertEquals(expectedPeople, world.getPeopleQuantity());
+        Assert.assertEquals(expectedPeople, peopleQuantity);
 
     }
 }
