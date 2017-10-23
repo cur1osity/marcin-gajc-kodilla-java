@@ -9,9 +9,4 @@ public class Country {
     private String countryName;
     private BigDecimal peopleQuantity;
 
-
-    public BigDecimal getPeopleQuantity() {
-        return peopleQuantity;
-    }
-
 }
