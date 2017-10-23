@@ -11,8 +11,6 @@ public class World {
 
     private List<Continent> continents = new ArrayList<>();
 
-    public World(){}
-
     public BigDecimal getPeopleQuantity() {
 
             return continents.stream()
