@@ -155,14 +155,15 @@ public class BoardTestSuite {
                 .flatMap(t -> t.getTasks().stream())
                 .map(t -> t.getCreated())
                 .map(t -> t.until(LocalDate.now(), DAYS))
-                .mapToLong(Long::longValue)
-                .sum();
+                .reduce(0L,Long::sum);
 
         long numberOftasks =  project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(t -> t.getTasks().stream())
                 .map(t -> t.getCreated())
                 .count();
+
+
 
         //Then
 

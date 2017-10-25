@@ -3,6 +3,7 @@ package com.kodilla.stream.book;
 import org.junit.Assert;
 import org.junit.Test;
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.stream.IntStream;
 
 public class BookTestSuite {
@@ -54,6 +55,8 @@ public class BookTestSuite {
                 .filter(n -> books.get(n).getYearOfPublication() > 2007)
                 .count();
         Assert.assertEquals(3, numberOfBooksPublicatedAfter2007);
+
+
     }
 
 }
