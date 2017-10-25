@@ -13,15 +13,26 @@ public class FlightRunner {
 
         Flight flight1 = new Flight("Warsaw","Moscow");
         Flight flight2 = new Flight("Warsaw","London");
+        Flight flight3 = new Flight("Warsaw","New York");
+
 
         try {
             flightSearcher.findflight(flight1);
+
         } catch (RouteNotFoundException e) {
             System.out.println("Flight cannot be found");;
         }
 
         try {
             flightSearcher.findflight(flight2);
+
+        } catch (RouteNotFoundException e) {
+            System.out.println("Flight cannot be found");;
+        }
+
+        try {
+            flightSearcher.findflight(flight3);
+
         } catch (RouteNotFoundException e) {
             System.out.println("Flight cannot be found");;
         }
