@@ -13,23 +13,12 @@ public class FirstChallenge {
 
         } finally {
 
-            return a / b;
+            if(b == 0){
+                return a/b;
+            }
+
+            return a/b;
+
         }
-
-    }
-
-    /**
-     * This main can throw an ArithmeticException!!!
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-
-        FirstChallenge firstChallenge = new FirstChallenge();
-
-        double result = firstChallenge.divide(3, 0);
-
-        System.out.println(result);
-
     }
 }
