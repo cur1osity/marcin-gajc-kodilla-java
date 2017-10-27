@@ -11,8 +11,14 @@ public class FirstChallengeTestSuite {
     @Test(expected = ArithmeticException.class)
     public void Should_throw_exception_When_divide_by_0() {
 
+        //given
         FirstChallenge firstChallenge = new FirstChallenge();
+
+        //when
         firstChallenge.divide(1,0);
+
+        //then
+        //expected exception was thrown
 
     }
 
