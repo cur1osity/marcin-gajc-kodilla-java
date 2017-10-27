@@ -1,7 +1,6 @@
 package com.kodilla.exception.test;
 
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +8,7 @@ import java.util.List;
 public class FlightTestSuite {
 
 
-    private List<Flight> getFlight() {
+    private List<Flight> getFlights() {
 
         Flight flight1 = new Flight("Warsaw", "Moscow");
         Flight flight2 = new Flight("Warsaw", "London");
@@ -24,33 +23,54 @@ public class FlightTestSuite {
         return flightList;
     }
 
-
-    @Test
-    public void Should_caught_exception_When_Route_doesnt_exist()  {
+    @Test(expected = RouteNotFoundException.class)
+    public void Should_throw_exception_When_Route_doesnt_exist() throws RouteNotFoundException {
 
         // given
-
+        List<Flight> flights = getFlights();
         FlightSearcher flightSearcher = new FlightSearcher(new HashMap<>());
 
-        flightSearcher.getFlightMap().
+        //when
+        flightSearcher.getFlightMap().put("Tokio", true);
 
-                put("Moscow", true);
-        flightSearcher.getFlightMap().
+        // then
+        for (Flight flight : flights) {
+            flightSearcher.findflight(flight);
+        }
 
-                put("London", false);
+    }
 
+    @Test(expected = RouteNotFoundException.class)
+    public void Should_throw_exception_When_Route_Is_False() throws RouteNotFoundException {
 
-        // ???
+        // given
+        List<Flight> flights = getFlights();
+        FlightSearcher flightSearcher = new FlightSearcher(new HashMap<>());
 
+        //when
+        flightSearcher.getFlightMap().put("Moscow", false);
 
-        for (Flight flight : getFlight()) {
+        // then
+        for (Flight flight : flights) {
+            flightSearcher.findflight(flight);
+        }
+    }
 
-            try {flightSearcher.findflight(flight);
+    @Test
+    public void Should_Find_Flights_When_Route_Is_Available() throws RouteNotFoundException {
 
-            } catch (RouteNotFoundException e) {
-                System.out.println(e + ": Flight cannot be found");
+        // given
+        List<Flight> flights = getFlights();
+        FlightSearcher flightSearcher = new FlightSearcher(new HashMap<>());
 
-            }
+        //when
+        flightSearcher.getFlightMap().put("Moscow", true);
+        flightSearcher.getFlightMap().put("London", true);
+        flightSearcher.getFlightMap().put("New York", true);
+
+        // then
+        for (Flight flight : flights) {
+            flightSearcher.findflight(flight);
         }
     }
 }
