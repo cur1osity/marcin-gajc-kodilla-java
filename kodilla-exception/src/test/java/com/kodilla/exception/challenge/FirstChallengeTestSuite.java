@@ -11,15 +11,9 @@ public class FirstChallengeTestSuite {
     @Test(expected = ArithmeticException.class)
     public void Should_throw_exception_When_divide_by_0() {
 
-        //given
         FirstChallenge firstChallenge = new FirstChallenge();
+        firstChallenge.divide(1,0);
 
-        // ???
-        try {
-            firstChallenge.divide(1,0);
-        } catch (ArithmeticException e) {
-            System.out.println("Can't divide by 0");
-        }
     }
 
     @Test
