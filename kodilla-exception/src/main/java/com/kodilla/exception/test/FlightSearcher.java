@@ -9,15 +9,15 @@ import java.util.Map;
 @AllArgsConstructor
 public class FlightSearcher {
 
+
     private Map<String, Boolean> flightMap;
 
     public void findflight(Flight flight) throws RouteNotFoundException {
 
-        if(flightMap.containsKey(flight.getArrivalAirport()) &&
-                (flightMap.get(flight.getArrivalAirport()) == true)) {
+        if (this.isFlightCanBeFound(flight)) {
 
             System.out.println("Flight was found" + ": " + flight.getDepartureAirport() +
-            " -> " + flight.getArrivalAirport());
+                    " -> " + flight.getArrivalAirport());
 
         } else {
 
@@ -26,4 +26,21 @@ public class FlightSearcher {
         }
     }
 
+    private boolean isFlightCanBeFound(Flight flight) {
+
+        return this.isFlightAvailale(flight) && this.isFlightPossible(flight);
+    }
+
+    private boolean isFlightAvailale(Flight flight) {
+
+        return flightMap.containsKey(flight.getArrivalAirport());
+    }
+
+    private boolean isFlightPossible(Flight flight) {
+
+            return flightMap.get(flight.getArrivalAirport());
+    }
+
 }
+
+

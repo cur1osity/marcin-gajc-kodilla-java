@@ -29,14 +29,15 @@ public class FlightTestSuite {
         // given
         List<Flight> flights = getFlights();
         FlightSearcher flightSearcher = new FlightSearcher(new HashMap<>());
-
-        //when
         flightSearcher.getFlightMap().put("Tokio", true);
 
-        // then
+        //when
         for (Flight flight : flights) {
             flightSearcher.findflight(flight);
         }
+
+        //then
+        //expected exception was thrown
 
     }
 
@@ -46,14 +47,15 @@ public class FlightTestSuite {
         // given
         List<Flight> flights = getFlights();
         FlightSearcher flightSearcher = new FlightSearcher(new HashMap<>());
-
-        //when
         flightSearcher.getFlightMap().put("Moscow", false);
 
-        // then
+        // when
         for (Flight flight : flights) {
             flightSearcher.findflight(flight);
         }
+
+        //then
+        //expected exception was thrown
     }
 
     @Test
@@ -62,15 +64,16 @@ public class FlightTestSuite {
         // given
         List<Flight> flights = getFlights();
         FlightSearcher flightSearcher = new FlightSearcher(new HashMap<>());
-
-        //when
         flightSearcher.getFlightMap().put("Moscow", true);
         flightSearcher.getFlightMap().put("London", true);
         flightSearcher.getFlightMap().put("New York", true);
 
-        // then
+        // when
         for (Flight flight : flights) {
             flightSearcher.findflight(flight);
         }
+
+        //then
+        //no exception was thrown
     }
 }
