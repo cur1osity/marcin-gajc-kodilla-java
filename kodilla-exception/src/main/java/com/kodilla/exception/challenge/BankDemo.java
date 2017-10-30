@@ -2,7 +2,7 @@ package com.kodilla.exception.challenge;
 
 public class BankDemo {
 
-    public static void main(String [] args) {
+    public static void main(String [] args) throws InsufficientFundsException {
         CheckingAccount c = new CheckingAccount(101);
         System.out.println("Depositing $500...");
         c.deposit(500.00);

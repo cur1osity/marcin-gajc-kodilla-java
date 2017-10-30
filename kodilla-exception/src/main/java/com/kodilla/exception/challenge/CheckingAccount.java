@@ -12,7 +12,7 @@ public class CheckingAccount {
         balance += amount;
     }
 
-    public void withdraw(double amount) {
+    public void withdraw(double amount) throws InsufficientFundsException {
 
         if(amount <= balance) {
             balance -= amount;

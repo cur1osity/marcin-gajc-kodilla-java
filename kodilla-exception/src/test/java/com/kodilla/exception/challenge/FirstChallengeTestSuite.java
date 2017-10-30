@@ -2,7 +2,9 @@ package com.kodilla.exception.challenge;
 
 import org.junit.Assert;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 
 public class FirstChallengeTestSuite {
@@ -21,6 +23,23 @@ public class FirstChallengeTestSuite {
         //expected exception was thrown
 
     }
+
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void Should_throw_exception_When_divide_by_0_with_Rule() {
+        // arrange
+        FirstChallenge firstChallenge = new FirstChallenge();
+        thrown.expect(ArithmeticException.class);
+
+        // act
+        firstChallenge.divide(1,0);
+    }
+
+
+
 
     @Test
     public void Should_not_throw_exception_When_divide_by_other_than_0() {

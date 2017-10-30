@@ -1,6 +1,6 @@
 package com.kodilla.exception.challenge;
 
-public class InsufficientFundsException extends RuntimeException{
+public class InsufficientFundsException extends Exception{
     private double amount;
 
 
