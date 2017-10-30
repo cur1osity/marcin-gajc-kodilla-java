@@ -11,7 +11,7 @@ public class ExceptionHandling {
 
         } catch (Exception e) {
 
-            System.out.println("Error");;
+            System.out.println("Error");
 
         } finally {
 

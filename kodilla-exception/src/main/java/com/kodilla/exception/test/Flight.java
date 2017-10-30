@@ -10,6 +10,4 @@ public class Flight {
     private String departureAirport;
     private String arrivalAirport;
 
-
-
 }

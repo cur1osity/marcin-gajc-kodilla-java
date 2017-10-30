@@ -14,7 +14,7 @@ public class FlightSearcher {
 
     public void findflight(Flight flight) throws RouteNotFoundException {
 
-        if (this.isFlightCanBeFound(flight)) {
+        if (isFlightCanBeFound(flight)) {
 
             System.out.println("Flight was found" + ": " + flight.getDepartureAirport() +
                     " -> " + flight.getArrivalAirport());
@@ -28,10 +28,10 @@ public class FlightSearcher {
 
     private boolean isFlightCanBeFound(Flight flight) {
 
-        return this.isFlightAvailale(flight) && this.isFlightPossible(flight);
+        return isFlightAvailable(flight) && isFlightPossible(flight);
     }
 
-    private boolean isFlightAvailale(Flight flight) {
+    private boolean isFlightAvailable(Flight flight) {
 
         return flightMap.containsKey(flight.getArrivalAirport());
     }
