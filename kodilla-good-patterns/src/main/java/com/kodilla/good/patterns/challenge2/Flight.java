@@ -9,7 +9,7 @@ import java.util.List;
 @Value
 public class Flight {
 
-    private List<Airports> flights = new ArrayList<>();
+    private List<Airport> flights = new ArrayList<>();
 
     public Flight(){}
 

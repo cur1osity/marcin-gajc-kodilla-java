@@ -1,46 +1,45 @@
 package com.kodilla.good.patterns.challenges;
 
-import com.kodilla.good.patterns.challenge2.Airports;
+import com.kodilla.good.patterns.challenge2.Airport;
 import com.kodilla.good.patterns.challenge2.Flight;
 import com.kodilla.good.patterns.challenge2.FlightRepo;
 import com.kodilla.good.patterns.challenge2.FlightService;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 
 public class FlightsTestSuite {
 
-    private Airports airport;
+    private Airport airport;
     private FlightService flightService;
 
 
-    @Before
-    public void repoAndFlightServiceSetup() {
+
+    private void repoAndFlightServiceSetup() {
 
         Flight flight1 = new Flight();
 
-        flight1.getFlights().add(new Airports("Warszawa"));
-        flight1.getFlights().add(new Airports("Krakow"));
+        flight1.getFlights().add(new Airport("Warszawa"));
+        flight1.getFlights().add(new Airport("Krakow"));
 
         Flight flight2 = new Flight();
 
-        flight2.getFlights().add(new Airports("Warszawa"));
-        flight2.getFlights().add(new Airports("Wroclaw"));
+        flight2.getFlights().add(new Airport("Warszawa"));
+        flight2.getFlights().add(new Airport("Wroclaw"));
 
         Flight flight3 = new Flight();
 
-        flight3.getFlights().add(new Airports("Poznan"));
-        flight3.getFlights().add(new Airports("Gdansk"));
-        flight3.getFlights().add(new Airports("Warszawa"));
+        flight3.getFlights().add(new Airport("Poznan"));
+        flight3.getFlights().add(new Airport("Gdansk"));
+        flight3.getFlights().add(new Airport("Warszawa"));
 
 
         Flight flight4 = new Flight();
 
-        flight4.getFlights().add(new Airports("Warszawa"));
-        flight4.getFlights().add(new Airports("Poznan"));
-        flight4.getFlights().add(new Airports("Moskwa"));
-        flight4.getFlights().add(new Airports("Gdansk"));
+        flight4.getFlights().add(new Airport("Warszawa"));
+        flight4.getFlights().add(new Airport("Poznan"));
+        flight4.getFlights().add(new Airport("Moskwa"));
+        flight4.getFlights().add(new Airport("Gdansk"));
 
         FlightRepo flightRepo = new FlightRepo();
 
@@ -50,13 +49,15 @@ public class FlightsTestSuite {
         flightRepo.getFlights().add(flight4);
 
         flightService = new FlightService(flightRepo);
+
+        airport = new Airport("Warszawa");
     }
 
     @Test
     public void Should_have_3_elements_When_finds_flights_from_Warsaw() {
 
         //given
-        airport = new Airports("Warszawa");
+        repoAndFlightServiceSetup();
 
         //when
         int numbersOfFlights = flightService.findFlightsFromCity(airport).size();
@@ -64,18 +65,13 @@ public class FlightsTestSuite {
         //then
         Assert.assertEquals(3, numbersOfFlights);
 
-//        List<Flight> airportsList = flightService.findFlightsFromCity(airport);
-//
-//        for (Flight airport : airportsList) {
-//            System.out.println(airport);
-//        }
     }
 
     @Test
     public void Should_have_1_elements_When_finds_flights_to_Warsaw() {
 
         //given
-        airport = new Airports("Warszawa");
+        repoAndFlightServiceSetup();
 
 
         //when
@@ -84,11 +80,33 @@ public class FlightsTestSuite {
         //then
         Assert.assertEquals(1 , numbersOfFlights);
 
-//        List<Flight> airportsList = flightService.findFlightsToCity(airport);
-//
-//        for (Flight airport : airportsList) {
-//            System.out.println(airport);
-//        }
+    }
+
+    @Test
+    public void Should_have_1_element_When_finds_indirect_flights_from_Warsaw() {
+
+        //given
+        repoAndFlightServiceSetup();
+
+        //when
+        int numbersOfFlights = flightService.findIndirectFlightsFromCity(airport).size();
+
+        //then
+        Assert.assertEquals(1, numbersOfFlights);
+
+    }
+
+    @Test
+    public void Should_have_1_elements_When_finds_indirect_flights_to_Warsaw() {
+
+        //given
+        repoAndFlightServiceSetup();
+
+        //when
+        int numbersOfFlights = flightService.findIndirectFlightsToCity(airport).size();
+
+        //then
+        Assert.assertEquals(1, numbersOfFlights);
 
     }
 }
