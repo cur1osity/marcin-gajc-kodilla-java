@@ -10,36 +10,39 @@ import org.junit.Test;
 
 public class FlightsTestSuite {
 
-    private Airport airport;
     private FlightService flightService;
-
+    private Airport warszawa = new Airport("Warszawa");
+    private Airport krakow = new Airport("Krakow");
+    private Airport wroclaw = new Airport("Wroclaw");
+    private Airport poznan = new Airport("Poznan");
+    private Airport gdansk = new Airport("Gdansk");
 
 
     private void repoAndFlightServiceSetup() {
 
         Flight flight1 = new Flight();
 
-        flight1.getFlights().add(new Airport("Warszawa"));
-        flight1.getFlights().add(new Airport("Krakow"));
+        flight1.getFlights().add(warszawa);
+        flight1.getFlights().add(krakow);
 
         Flight flight2 = new Flight();
 
-        flight2.getFlights().add(new Airport("Warszawa"));
-        flight2.getFlights().add(new Airport("Wroclaw"));
+        flight2.getFlights().add(warszawa);
+        flight2.getFlights().add(wroclaw);
 
         Flight flight3 = new Flight();
 
-        flight3.getFlights().add(new Airport("Poznan"));
-        flight3.getFlights().add(new Airport("Gdansk"));
-        flight3.getFlights().add(new Airport("Warszawa"));
+        flight3.getFlights().add(poznan);
+        flight3.getFlights().add(gdansk);
+        flight3.getFlights().add(warszawa);
 
 
         Flight flight4 = new Flight();
 
-        flight4.getFlights().add(new Airport("Warszawa"));
-        flight4.getFlights().add(new Airport("Poznan"));
-        flight4.getFlights().add(new Airport("Moskwa"));
-        flight4.getFlights().add(new Airport("Gdansk"));
+        flight4.getFlights().add(warszawa);
+        flight4.getFlights().add(poznan);
+        flight4.getFlights().add(wroclaw);
+        flight4.getFlights().add(gdansk);
 
         FlightRepo flightRepo = new FlightRepo();
 
@@ -50,7 +53,6 @@ public class FlightsTestSuite {
 
         flightService = new FlightService(flightRepo);
 
-        airport = new Airport("Warszawa");
     }
 
     @Test
@@ -60,7 +62,7 @@ public class FlightsTestSuite {
         repoAndFlightServiceSetup();
 
         //when
-        int numbersOfFlights = flightService.findFlightsFromCity(airport).size();
+        int numbersOfFlights = flightService.findFlightsFromCity(warszawa).size();
 
         //then
         Assert.assertEquals(3, numbersOfFlights);
@@ -75,7 +77,7 @@ public class FlightsTestSuite {
 
 
         //when
-        int numbersOfFlights = flightService.findFlightsToCity(airport).size();
+        int numbersOfFlights = flightService.findFlightsToCity(warszawa).size();
 
         //then
         Assert.assertEquals(1 , numbersOfFlights);
@@ -89,7 +91,7 @@ public class FlightsTestSuite {
         repoAndFlightServiceSetup();
 
         //when
-        int numbersOfFlights = flightService.findIndirectFlightsFromCity(airport).size();
+        int numbersOfFlights = flightService.findIndirectFlightsFromCity(warszawa).size();
 
         //then
         Assert.assertEquals(1, numbersOfFlights);
@@ -103,7 +105,7 @@ public class FlightsTestSuite {
         repoAndFlightServiceSetup();
 
         //when
-        int numbersOfFlights = flightService.findIndirectFlightsToCity(airport).size();
+        int numbersOfFlights = flightService.findIndirectFlightsToCity(warszawa).size();
 
         //then
         Assert.assertEquals(1, numbersOfFlights);
