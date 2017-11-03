@@ -8,109 +8,87 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class FlightsTestSuite {
 
     private Airports airport;
-    private FlightRepo flightRepo;
     private FlightService flightService;
 
 
-    public List<Flight> getFlights() {
-
-        List<Flight> flightList = new ArrayList<>();
-
-        Flight flight1 = new Flight("Warszawa", "Krakow", "none", true);
-        Flight flight2 = new Flight("Gdansk", "Poznan", "none", true);
-        Flight flight3 = new Flight("Zakopane", "Szczecin", "none", true);
-        Flight flight4 = new Flight("Warszawa", "Krakow", "Poznan", false);
-        Flight flight5 = new Flight("Warszawa", "Wroclaw", "Gdansk", false);
-        Flight flight6 = new Flight("Warszawa", "Szczecin", "none", true);
-        Flight flight7 = new Flight("Krakow", "Warszawa", "none", true);
-        Flight flight8 = new Flight("Gdansk", "Warszawa", "none", true);
-        Flight flight9 = new Flight("Krakow", "Warszawa", "Poznan", false);
-        Flight flight10 = new Flight("Gdansk", "Warszawa", "Szczecin", false);
-
-        flightList.add(flight1);
-        flightList.add(flight2);
-        flightList.add(flight3);
-        flightList.add(flight4);
-        flightList.add(flight5);
-        flightList.add(flight6);
-        flightList.add(flight7);
-        flightList.add(flight8);
-        flightList.add(flight9);
-        flightList.add(flight10);
-
-        return flightList;
-
-    }
-
     @Before
-    public void setup() {
+    public void repoAndFlightServiceSetup() {
 
-        airport = new Airports("Warszawa");
-        flightRepo = new FlightRepo(getFlights());
+        Flight flight1 = new Flight();
+
+        flight1.getFlights().add(new Airports("Warszawa"));
+        flight1.getFlights().add(new Airports("Krakow"));
+
+        Flight flight2 = new Flight();
+
+        flight2.getFlights().add(new Airports("Warszawa"));
+        flight2.getFlights().add(new Airports("Wroclaw"));
+
+        Flight flight3 = new Flight();
+
+        flight3.getFlights().add(new Airports("Poznan"));
+        flight3.getFlights().add(new Airports("Gdansk"));
+        flight3.getFlights().add(new Airports("Warszawa"));
+
+
+        Flight flight4 = new Flight();
+
+        flight4.getFlights().add(new Airports("Warszawa"));
+        flight4.getFlights().add(new Airports("Poznan"));
+        flight4.getFlights().add(new Airports("Moskwa"));
+        flight4.getFlights().add(new Airports("Gdansk"));
+
+        FlightRepo flightRepo = new FlightRepo();
+
+        flightRepo.getFlights().add(flight1);
+        flightRepo.getFlights().add(flight2);
+        flightRepo.getFlights().add(flight3);
+        flightRepo.getFlights().add(flight4);
+
         flightService = new FlightService(flightRepo);
-
     }
 
     @Test
-    public void Should_have_2_elements_When_finds_direct_flights_from_Warsaw() {
+    public void Should_have_3_elements_When_finds_flights_from_Warsaw() {
 
         //given
-        //@Before
+        airport = new Airports("Warszawa");
 
         //when
         int numbersOfFlights = flightService.findFlightsFromCity(airport).size();
 
         //then
-        Assert.assertEquals(2, numbersOfFlights);
+        Assert.assertEquals(3, numbersOfFlights);
 
+//        List<Flight> airportsList = flightService.findFlightsFromCity(airport);
+//
+//        for (Flight airport : airportsList) {
+//            System.out.println(airport);
+//        }
     }
 
     @Test
-    public void Should_have_2_elements_When_finds_direct_flights_to_Warsaw() {
+    public void Should_have_1_elements_When_finds_flights_to_Warsaw() {
 
         //given
-        //@Before
+        airport = new Airports("Warszawa");
+
 
         //when
         int numbersOfFlights = flightService.findFlightsToCity(airport).size();
 
         //then
-        Assert.assertEquals(2, numbersOfFlights);
+        Assert.assertEquals(1 , numbersOfFlights);
+
+//        List<Flight> airportsList = flightService.findFlightsToCity(airport);
+//
+//        for (Flight airport : airportsList) {
+//            System.out.println(airport);
+//        }
 
     }
-
-    @Test
-    public void Should_have_2_elements_When_finds_indirect_flights_from_Warsaw() {
-
-        //given
-        //@Before
-
-        //when
-        int numbersOfFlights = flightService.findIndirectFlightsFromCity(airport).size();
-
-        //then
-        Assert.assertEquals(2, numbersOfFlights);
-
-    }
-
-    @Test
-    public void Should_have_2_elements_When_finds_indirect_flights_to_Warsaw() {
-
-        //given
-        //@Before
-
-        //when
-        int numbersOfFlights = flightService.findIndirectFlightsToCity(airport).size();
-
-        //then
-        Assert.assertEquals(2, numbersOfFlights);
-
-    }
-
 }

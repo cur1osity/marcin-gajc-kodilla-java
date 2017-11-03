@@ -8,48 +8,25 @@ import java.util.stream.Collectors;
 @Value
 public class FlightService {
 
+    // uznalem ze najlepiej bedzie jak lotnisko poczatkowe to bedzie pierwszy element w liscie
+    // a koncowe to ostatni element w liscie
+
+
     private FlightRepo flightRepo;
 
     public List<Flight> findFlightsFromCity(Airports airport) {
 
-        List<Flight> departureList = flightRepo.getFlights().stream()
-                .filter(f -> f.isDirect() == true)
-                .filter(f -> f.getDepartureAirport() == airport.getAirport())
+        return flightRepo.getFlights().stream()
+                .filter(f -> f.getFlights().get(0).getName().equals(airport.getName()))
                 .collect(Collectors.toList());
 
-        return departureList;
     }
 
     public List<Flight> findFlightsToCity(Airports airport) {
 
-        List<Flight> arrivalList = flightRepo.getFlights().stream()
-                .filter(f -> f.isDirect() == true)
-                .filter(f -> f.getArrivalAirport() == airport.getAirport())
+        return flightRepo.getFlights().stream()
+                .filter(f -> f.getFlights().get(f.getFlights().size()-1).getName().equals(airport.getName()))
                 .collect(Collectors.toList());
-
-        return arrivalList;
-
-    }
-
-    public List<Flight> findIndirectFlightsFromCity(Airports airport) {
-
-        List<Flight> indirectFlights = flightRepo.getFlights().stream()
-                .filter(f -> f.isDirect() == false)
-                .filter(f -> f.getArrivalAirport() == airport.getAirport())
-                .collect(Collectors.toList());
-
-        return indirectFlights;
-
-    }
-
-    public List<Flight> findIndirectFlightsToCity(Airports airport) {
-
-        List<Flight> indirectFlights = flightRepo.getFlights().stream()
-                .filter(f -> f.isDirect() == false)
-                .filter(f -> f.getDepartureAirport() == airport.getAirport())
-                .collect(Collectors.toList());
-
-        return indirectFlights;
 
     }
 }

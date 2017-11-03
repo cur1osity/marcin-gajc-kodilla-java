@@ -5,5 +5,5 @@ import lombok.Value;
 @Value
 public class Airports {
 
-    private String airport;
+    private String name;
 }
