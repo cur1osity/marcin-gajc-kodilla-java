@@ -1,9 +1,5 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenge3;
 
-import com.kodilla.good.patterns.challenge1.*;
-import com.kodilla.good.patterns.challenge1.OrderRequest;
-import com.kodilla.good.patterns.challenge1.Product;
-import com.kodilla.good.patterns.challenge1.ProductDto;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

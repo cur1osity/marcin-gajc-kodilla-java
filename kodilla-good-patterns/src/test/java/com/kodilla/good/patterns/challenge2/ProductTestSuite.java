@@ -1,11 +1,12 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenge2;
 
+import com.kodilla.good.patterns.challenges.*;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class OrdersTestSuite {
+public class ProductTestSuite {
 
     private OrderRequestRetriever orderRequestRetriever;
     private OrderRequest orderRequest;

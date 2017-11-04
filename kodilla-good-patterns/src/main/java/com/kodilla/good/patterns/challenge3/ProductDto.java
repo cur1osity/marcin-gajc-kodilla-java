@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenge1;
+package com.kodilla.good.patterns.challenge3;
 
 import lombok.Value;
 

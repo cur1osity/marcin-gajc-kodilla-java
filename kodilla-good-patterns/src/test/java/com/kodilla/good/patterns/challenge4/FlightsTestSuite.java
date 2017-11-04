@@ -1,9 +1,5 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenge4;
 
-import com.kodilla.good.patterns.challenge2.Airport;
-import com.kodilla.good.patterns.challenge2.Flight;
-import com.kodilla.good.patterns.challenge2.FlightRepo;
-import com.kodilla.good.patterns.challenge2.FlightService;
 import org.junit.Assert;
 import org.junit.Test;
 

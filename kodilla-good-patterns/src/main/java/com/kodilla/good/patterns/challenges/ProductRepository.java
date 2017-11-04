@@ -15,11 +15,6 @@ public class ProductRepository implements OrderRepository {
 
         orders.add(orderRequest);
 
-//        for (OrderRequest order : orders) {
-//
-//            System.out.println(order);
-//        }
-
         System.out.println("Order was added to orders list");
 
     }

@@ -1,11 +1,11 @@
-package com.kodilla.good.patterns.challenge1;
+package com.kodilla.good.patterns.challenge3;
 
-public class ExtraFoodShop implements Shop {
+public class HealthyShop implements Shop {
 
     @Override
     public boolean process(OrderRequest orderRequest) {
         System.out.println("Ordering " + orderRequest.getQuantity() + " "
-                + orderRequest.getProduct().getName() + " in ExtraFoodShop");
+                + orderRequest.getProduct().getName() + " in HealthyShop");
 
         return true;
     }
