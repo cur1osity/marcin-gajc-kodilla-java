@@ -1,6 +1,5 @@
 package com.kodilla.good.patterns.challenge2;
 
-import com.kodilla.good.patterns.challenges.*;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

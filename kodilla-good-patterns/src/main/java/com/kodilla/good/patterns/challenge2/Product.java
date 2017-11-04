@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenge2;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
