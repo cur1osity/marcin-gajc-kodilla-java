@@ -9,8 +9,17 @@ import java.util.List;
 @Value
 public class Flight {
 
-    private List<Airport> flights = new ArrayList<>();
+    private List<Airport> airports = new ArrayList<>();
 
     public Flight(){}
+
+    public void addAirport (Airport airport) {
+
+        if (!airports.contains(airport)) {
+
+            airports.add(airport);
+        }
+
+    }
 
 }

@@ -22,34 +22,34 @@ public class FlightsTestSuite {
 
         Flight flight1 = new Flight();
 
-        flight1.getFlights().add(warszawa);
-        flight1.getFlights().add(krakow);
+        flight1.addAirport(warszawa);
+        flight1.addAirport(krakow);
 
         Flight flight2 = new Flight();
 
-        flight2.getFlights().add(warszawa);
-        flight2.getFlights().add(wroclaw);
+        flight2.addAirport(warszawa);
+        flight2.addAirport(wroclaw);
 
         Flight flight3 = new Flight();
 
-        flight3.getFlights().add(poznan);
-        flight3.getFlights().add(gdansk);
-        flight3.getFlights().add(warszawa);
+        flight3.addAirport(poznan);
+        flight3.addAirport(gdansk);
+        flight3.addAirport(warszawa);
 
 
         Flight flight4 = new Flight();
 
-        flight4.getFlights().add(warszawa);
-        flight4.getFlights().add(poznan);
-        flight4.getFlights().add(wroclaw);
-        flight4.getFlights().add(gdansk);
+        flight4.addAirport(warszawa);
+        flight4.addAirport(poznan);
+        flight4.addAirport(wroclaw);
+        flight4.addAirport(gdansk);
 
         FlightRepo flightRepo = new FlightRepo();
 
-        flightRepo.getFlights().add(flight1);
-        flightRepo.getFlights().add(flight2);
-        flightRepo.getFlights().add(flight3);
-        flightRepo.getFlights().add(flight4);
+        flightRepo.addFlight(flight1);
+        flightRepo.addFlight(flight2);
+        flightRepo.addFlight(flight3);
+        flightRepo.addFlight(flight4);
 
         flightService = new FlightService(flightRepo);
 

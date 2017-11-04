@@ -7,9 +7,6 @@ import java.util.stream.Collectors;
 
 public class FlightService {
 
-    // uznalem ze najlepiej bedzie jak lotnisko poczatkowe to bedzie pierwszy element w liscie
-    // a koncowe to ostatni element w liscie
-
     private FlightRepo flightRepo;
 
     public FlightService(FlightRepo flightRepo) {
@@ -20,7 +17,7 @@ public class FlightService {
 
         return flightRepo.getFlights().stream()
                 .filter(f -> {
-                    String name = f.getFlights().get(0).getName();
+                    String name = f.getAirports().get(0).getName();
                     return name.equals(airport.getName()); })
                 .collect(Collectors.toList());
 
@@ -30,7 +27,7 @@ public class FlightService {
 
         return flightRepo.getFlights().stream()
                 .filter(f -> {
-                    String name = f.getFlights().get(f.getFlights().size()-1).getName();
+                    String name = f.getAirports().get(f.getAirports().size()-1).getName();
                     return name.equals(airport.getName()); })
                 .collect(Collectors.toList());
 
@@ -40,9 +37,9 @@ public class FlightService {
 
         return flightRepo.getFlights().stream()
                 .filter(f -> {
-                    String name = f.getFlights().get(0).getName();
+                    String name = f.getAirports().get(0).getName();
                     return name.equals(airport.getName()); })
-                .filter(f -> f.getFlights().size() > 2)
+                .filter(f -> f.getAirports().size() > 2)
                 .collect(Collectors.toList());
 
     }
@@ -51,9 +48,9 @@ public class FlightService {
 
         return flightRepo.getFlights().stream()
                 .filter(f -> {
-                    String name = f.getFlights().get(f.getFlights().size()-1).getName();
+                    String name = f.getAirports().get(f.getAirports().size()-1).getName();
                     return name.equals(airport.getName()); })
-                .filter(f -> f.getFlights().size() > 2)
+                .filter(f -> f.getAirports().size() > 2)
                 .collect(Collectors.toList());
 
     }

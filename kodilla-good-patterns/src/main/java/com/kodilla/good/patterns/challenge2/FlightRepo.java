@@ -14,4 +14,13 @@ public class FlightRepo {
 
     public FlightRepo(){}
 
+    public void addFlight (Flight flight) {
+
+        if (!flights.contains(flight)) {
+
+            flights.add(flight);
+        }
+
+    }
+
 }
