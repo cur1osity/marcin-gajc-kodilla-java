@@ -5,22 +5,32 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDateTime;
+
 public class ProductTestSuite {
 
-    private OrderRequestRetriever orderRequestRetriever;
     private OrderRequest orderRequest;
     private ProductRepository productRepository;
     private ProductOrderService productOrderService;
     private OrderProcessor orderProcessor;
 
+    private OrderRequest retrieve(boolean isCorrect) {
+
+        User user = new User("Marcin Gajc", "marcin.gajc@gmail.com");
+
+        LocalDateTime orderDate = LocalDateTime.of(2017,9,1,12,0);
+
+        Product product = new Product("toothbrush",10);
+
+        return new OrderRequest(user, product, orderDate, isCorrect);
+    }
+
 
     @Before
     public void setup() {
 
-        orderRequestRetriever = new OrderRequestRetriever();
-        orderRequest = orderRequestRetriever.retrieve();
         productRepository = new ProductRepository();
-        productOrderService = new ProductOrderService(true);
+        productOrderService = new ProductOrderService();
         orderProcessor = new OrderProcessor(new MailService(), productOrderService, productRepository);
     }
 
@@ -33,7 +43,8 @@ public class ProductTestSuite {
     public void Should_Have_1_Element_List_Size_When_Order_is_Correct() {
 
         //given
-        // @Before
+        // @Before +
+        orderRequest = retrieve(true);
 
         //when
         orderProcessor.process(orderRequest);
@@ -49,7 +60,7 @@ public class ProductTestSuite {
 
         //given
         //@Before +
-        ProductOrderService productOrderService = new ProductOrderService(false);
+        orderRequest = retrieve(false);
         orderProcessor = new OrderProcessor(new MailService(), productOrderService, productRepository);
 
 
@@ -67,7 +78,8 @@ public class ProductTestSuite {
     public void Should_Have_Dto_with_parameter_True_When_Order_is_correct() {
 
         //given
-        //@Before
+        //@Before +
+        orderRequest = retrieve(true);
 
 
         //when
@@ -84,7 +96,7 @@ public class ProductTestSuite {
 
         //given
         //@Before +
-        ProductOrderService productOrderService = new ProductOrderService(false);
+        orderRequest = retrieve(false);
         orderProcessor = new OrderProcessor(new MailService(), productOrderService, productRepository);
 
         //when

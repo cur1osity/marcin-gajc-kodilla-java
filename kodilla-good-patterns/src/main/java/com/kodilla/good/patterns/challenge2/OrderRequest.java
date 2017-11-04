@@ -12,5 +12,6 @@ public class OrderRequest {
     private User user;
     private Product product;
     private LocalDateTime orderDate;
+    private boolean isCorrect;
 
 }

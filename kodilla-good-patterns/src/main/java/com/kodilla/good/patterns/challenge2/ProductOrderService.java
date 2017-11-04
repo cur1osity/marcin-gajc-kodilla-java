@@ -5,7 +5,6 @@ import lombok.Value;
 @Value
 public class ProductOrderService implements OrderService {
 
-    private boolean isCorrect;
 
     @Override
     public boolean order(OrderRequest orderRequest) {
@@ -15,6 +14,6 @@ public class ProductOrderService implements OrderService {
                 + orderRequest.getUser().getName());
         System.out.println("Date of order: " + orderRequest.getOrderDate());
 
-        return isCorrect;
+        return orderRequest.isCorrect();
     }
 }
