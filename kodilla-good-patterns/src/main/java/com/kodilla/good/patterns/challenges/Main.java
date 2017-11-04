@@ -8,10 +8,19 @@ public class Main {
 
         MovieStore movieStore = new MovieStore();
 
-        String movieCollection = movieStore.getMovies().entrySet().stream()
+        String movieCollection1 = movieStore.getMovies().entrySet().stream()
                 .flatMap(f -> f.getValue().stream())
                 .collect(Collectors.joining("!"));
 
-        System.out.println(movieCollection);
+        System.out.println(movieCollection1);
+
+
+
+        String movieCollection2 = movieStore.getMovies().values().stream()
+                .flatMap(f -> f.stream())
+                .collect(Collectors.joining("!"));
+
+        System.out.println(movieCollection2);
+
     }
 }
