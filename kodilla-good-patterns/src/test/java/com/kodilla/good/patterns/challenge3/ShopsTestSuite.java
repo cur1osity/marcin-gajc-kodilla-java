@@ -11,7 +11,7 @@ public class ShopsTestSuite {
     private Shop shop;
 
 
-    public OrderRequest retrieve(){
+    private OrderRequest retrieve(){
 
         Product product = new Product("eggs");
 
