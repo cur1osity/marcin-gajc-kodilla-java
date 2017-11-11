@@ -7,11 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class CircleX implements Shape {
 
-//@Autowired
-//@Qualifier("circleX")
-//private Shape shape;
-
-
     @Override
     public String getShapeName() {
         return "This is a circle.";
