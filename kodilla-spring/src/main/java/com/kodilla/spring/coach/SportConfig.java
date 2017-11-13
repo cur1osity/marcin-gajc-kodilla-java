@@ -1,5 +1,6 @@
 package com.kodilla.spring.coach;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,7 +15,7 @@ public class SportConfig {
 
     // define bean for our swim coach AND inject dependency
     @Bean
-    public Coach swimCoach() {
-        return new SwimCoach(sadFortuneService());
+    public Coach swimCoach(FortuneService sadFortuneService) {
+        return new SwimCoach(sadFortuneService);
     }
 }
