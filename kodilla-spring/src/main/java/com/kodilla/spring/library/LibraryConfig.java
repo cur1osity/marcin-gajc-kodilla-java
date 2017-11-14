@@ -1,5 +1,6 @@
 package com.kodilla.spring.library;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -7,12 +8,13 @@ import org.springframework.context.annotation.Configuration;
 public class LibraryConfig {
 
     @Bean
-    public Library library(LibraryDbController libraryDbController) {
-        return new Library(libraryDbController);
+    public LibraryDbController libraryDbController() {
+        return new LibraryDbController();
     }
 
     @Bean
-    public LibraryDbController libraryDbController() {
-        return new LibraryDbController();
+    @Autowired
+    public Library library(LibraryDbController libraryDbController) {
+        return new Library(libraryDbController);
     }
 }
