@@ -4,15 +4,24 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.Arrays;
+
 public class ReaderTestSuite {
 
     @Test
     public void testRead() {
         //Given
-        ApplicationContext context = new AnnotationConfigApplicationContext(ReaderConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.reader");
         Reader reader = context.getBean(Reader.class);
         //When & Then
         reader.read();
+
+        Arrays.stream(context.getBeanDefinitionNames())
+                .forEach(System.out::println);
+        System.out.println("<< ===== Beans list ====");
+
+
+
     }
 
     @Test
