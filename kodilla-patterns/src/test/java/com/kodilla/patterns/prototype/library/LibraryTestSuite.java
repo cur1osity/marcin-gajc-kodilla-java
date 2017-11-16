@@ -81,11 +81,12 @@ public class LibraryTestSuite {
         library.getBooks().add(new Book("Book5","Author5", LocalDate.of(2004,1,1)));
 
         int library1size = library.getBooks().size();
-        int library2size = libraryDeepCopy.getBooks().size() + 1;
+        int library2size = libraryDeepCopy.getBooks().size();
 
         // then
 
-        Assert.assertEquals(library1size, library2size);
+        Assert.assertEquals(6, library1size);
+        Assert.assertEquals(5, library2size);
 
     }
 }
