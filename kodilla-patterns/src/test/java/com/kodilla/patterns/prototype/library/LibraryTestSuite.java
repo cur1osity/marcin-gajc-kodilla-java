@@ -11,7 +11,7 @@ public class LibraryTestSuite {
 
     private Library library;
 
-    private Set createBooks() {
+    private Set<Book> createBooks() {
 
         Set<Book> books = new HashSet<>();
 
@@ -35,22 +35,16 @@ public class LibraryTestSuite {
 
 
     @Test
-    public void Should_have_same_number_of_elements_after_add_When_shallow_copy_is_used() {
+    public void Should_HaveSameNumberOfElementsAfterAdd_When_ShallowCopyIsUsed() throws Exception {
 
         // given
 
-        Library libraryShallowCopy = null;
-
-        try {
-            libraryShallowCopy = library.shallowCopy();
-            libraryShallowCopy.setName("Library2");
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
+        Library libraryShallowCopy = library.shallowCopy();
+        libraryShallowCopy.setName("Library2");
 
         // when
 
-        library.getBooks().add(new Book("Book5","Author5", LocalDate.of(2004,1,1)));
+        library.getBooks().add(new Book("Book6","Author6", LocalDate.of(2004,1,1)));
 
         int library1size = library.getBooks().size();
         int library2size = libraryShallowCopy.getBooks().size();
@@ -63,22 +57,16 @@ public class LibraryTestSuite {
     }
 
     @Test
-    public void Should_have_different_number_of_elements_after_add_When_deep_copy_is_used() {
+    public void Should_HaveDifferentNumberOfElementsAfterAdd_WhenDeepCopyIsUsed() throws Exception {
 
         // given
 
-        Library libraryDeepCopy = null;
-
-        try {
-            libraryDeepCopy = library.deepCopy();
-            libraryDeepCopy.setName("Library3");
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
+        Library libraryDeepCopy = library.deepCopy();
+        libraryDeepCopy.setName("Library3");
 
         // when
 
-        library.getBooks().add(new Book("Book5","Author5", LocalDate.of(2004,1,1)));
+        library.getBooks().add(new Book("Book6","Author6", LocalDate.of(2004,1,1)));
 
         int library1size = library.getBooks().size();
         int library2size = libraryDeepCopy.getBooks().size();
