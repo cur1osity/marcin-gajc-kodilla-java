@@ -1,4 +1,4 @@
-package com.kodilla.patterns.strategy.social;
+package com.kodilla.patterns.strategy.social.publishers;
 
 public class SnapchatPublisher implements SocialPublisher{
 
