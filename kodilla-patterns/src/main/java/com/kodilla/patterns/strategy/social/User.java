@@ -2,7 +2,7 @@ package com.kodilla.patterns.strategy.social;
 
 import com.kodilla.patterns.strategy.social.publishers.SocialPublisher;
 
-public class User {
+public abstract class User {
 
     final private String name;
     protected SocialPublisher socialPublisher;
