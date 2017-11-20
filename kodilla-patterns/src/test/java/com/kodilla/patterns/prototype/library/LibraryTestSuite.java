@@ -96,6 +96,7 @@ public class LibraryTestSuite {
 
         // then
         Assert.assertNotEquals(library.getName(), libraryDeepCopy.getName());
+
     }
 }
 
