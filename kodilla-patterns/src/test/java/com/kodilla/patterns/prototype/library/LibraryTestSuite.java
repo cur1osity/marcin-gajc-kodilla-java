@@ -34,49 +34,68 @@ public class LibraryTestSuite {
         library.getBooks().addAll(createBooks());
 
         book = new Book("Book6", "Auhor6", LocalDate.of(2004, 1, 1));
-
     }
-
 
     @Test
     public void Should_HaveSameNumberOfElementsAfterAdd_When_ShallowCopyIsUsed() throws Exception {
 
         // given
-
-        Library libraryShallowCopy = library.shallowCopy();
-        libraryShallowCopy.setName("Library2");
+        //@Before
 
         // when
-
+        Library libraryShallowCopy = library.shallowCopy();
         library.addBook(book);
-        int library1size = library.getBooks().size();
-        int library2size = libraryShallowCopy.getBooks().size();
 
         // then
-
+        int library1size = library.getBooks().size();
+        int library2size = libraryShallowCopy.getBooks().size();
         Assert.assertEquals(library1size, library2size);
-
-
     }
 
     @Test
     public void Should_HaveDifferentNumberOfElementsAfterAdd_WhenDeepCopyIsUsed() throws Exception {
 
         // given
-
-        Library libraryDeepCopy = library.deepCopy();
-        libraryDeepCopy.setName("Library3");
+        //@Before
 
         // when
-
+        Library libraryDeepCopy = library.deepCopy();
         library.addBook(book);
-        int library1size = library.getBooks().size();
-        int library2size = libraryDeepCopy.getBooks().size();
 
         // then
-
+        int library1size = library.getBooks().size();
+        int library2size = libraryDeepCopy.getBooks().size();
         Assert.assertEquals(6, library1size);
         Assert.assertEquals(5, library2size);
+    }
 
+
+    @Test
+    public void Should_HaveDifferentName_WhenShallowCopyIsUsed() throws Exception {
+
+        // given
+        //@Before
+
+        // when
+        Library libraryShallowCopy = library.shallowCopy();
+        library.setName("LibraryX");
+
+        // then
+        Assert.assertNotEquals(library.getName(), libraryShallowCopy.getName());
+    }
+
+    @Test
+    public void Should_HaveDifferentName_WhenDeepCopyIsUsed() throws Exception {
+
+        // given
+        //@Before
+
+        // when
+        Library libraryDeepCopy = library.deepCopy();
+        library.setName("LibraryX");
+
+        // then
+        Assert.assertNotEquals(library.getName(), libraryDeepCopy.getName());
     }
 }
+

@@ -9,7 +9,8 @@ public class BigmacTestSuite {
     public void Should_have_2_ingredients_When_2_ingredients_where_added_with_builder() {
 
         // given
-        final Bigmac.BigmacBuilder bigmacBuilder = new Bigmac.BigmacBuilder()
+        Bigmac.BigmacBuilder builder = new Bigmac.BigmacBuilder();
+        final Bigmac.BigmacBuilder bigmacBuilder = builder
                 .ingredients("cheese")
                 .ingredients("onion")
                 .burgers(2)
