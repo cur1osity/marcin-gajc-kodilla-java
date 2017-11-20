@@ -23,6 +23,11 @@ public final class Library extends Prototype {
         return books;
     }
 
+    public void addBook(Book book) {
+        books.add(book);
+    }
+
+
     public Library shallowCopy() throws CloneNotSupportedException {
         return (Library) super.clone();
     }
