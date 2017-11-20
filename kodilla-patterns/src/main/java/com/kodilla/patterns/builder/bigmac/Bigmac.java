@@ -1,12 +1,15 @@
 package com.kodilla.patterns.builder.bigmac;
 
+import lombok.Value;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Value
 public class Bigmac {
 
     public enum Roll {
-        ROLL_WITH_SEZAME, ROLL_WITHOUTSEZAME
+        ROLL_WITH_SEZAME, ROLL_WITHOUT_SEZAME
     }
 
     public enum Sauce {
@@ -50,36 +53,4 @@ public class Bigmac {
         }
     }
 
-    private Bigmac(final Roll roll,final Sauce sauce, final int burgers, final List<String> ingredients) {
-        this.roll = roll;
-        this.sauce = sauce;
-        this.burgers = burgers;
-        this.ingredients = new ArrayList<>(ingredients);
-    }
-
-    public Roll getRoll() {
-        return roll;
-    }
-
-    public Sauce getSauce() {
-        return sauce;
-    }
-
-    public int getBurgers() {
-        return burgers;
-    }
-
-    public List<String> getIngredients() {
-        return ingredients;
-    }
-
-    @Override
-    public String toString() {
-        return "Bigmac{" +
-                "roll=" + roll +
-                ", sauce=" + sauce +
-                ", burgers=" + burgers +
-                ", ingredients=" + ingredients +
-                '}';
-    }
 }

@@ -6,9 +6,9 @@ public class TaskFactory {
         SHOPPING, DRIVING, PAINTING
     }
 
-    public final Task makeTask(Tasks tasks) {
+    public final Task makeTask(Tasks task) {
 
-        switch (tasks) {
+        switch (task) {
 
             case SHOPPING:
                 return new ShoppingTask("Do shopping");
