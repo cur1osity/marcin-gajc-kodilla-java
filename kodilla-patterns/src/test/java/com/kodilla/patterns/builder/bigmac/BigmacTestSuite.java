@@ -8,20 +8,20 @@ public class BigmacTestSuite {
     @Test
     public void Should_have_2_ingredients_When_2_ingredients_where_added_with_builder() {
 
-        //given
-        Bigmac bigmac = new Bigmac.BigmacBuilder()
+        // given
+        final Bigmac.BigmacBuilder bigmacBuilder = new Bigmac.BigmacBuilder()
                 .ingredients("cheese")
                 .ingredients("onion")
                 .burgers(2)
                 .roll(Bigmac.Roll.ROLL_WITH_SEZAME)
-                .sauce(Bigmac.Sauce.BARBECUE)
-                .build();
+                .sauce(Bigmac.Sauce.BARBECUE);
 
+        // when
+        Bigmac bigmac = bigmacBuilder.build();
+
+        // then
         System.out.println(bigmac);
-
-        //When
         int howManyIngredients = bigmac.getIngredients().size();
-        //Then
         Assert.assertEquals(2, howManyIngredients);
 
     }
