@@ -1,10 +1,12 @@
 package com.kodilla.patterns.builder.bigmac;
 
+import lombok.Builder;
 import lombok.Value;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Builder
 @Value
 public class Bigmac {
 
@@ -23,34 +25,11 @@ public class Bigmac {
 
     public static class BigmacBuilder {
 
-        private Roll roll;
-        private Sauce sauce;
-        private int burgers;
         private List<String> ingredients = new ArrayList<>();
-
-        public BigmacBuilder roll(Roll roll) {
-            this.roll = roll;
-            return this;
-        }
-
-        public BigmacBuilder sauce(Sauce sauce) {
-            this.sauce = sauce;
-            return this;
-        }
-
-        public BigmacBuilder burgers(int burgers) {
-            this.burgers = burgers;
-            return this;
-        }
 
         public BigmacBuilder ingredients(String ingredient) {
             ingredients.add(ingredient);
             return this;
         }
-
-        public Bigmac build() {
-            return new Bigmac(roll, sauce, burgers, ingredients);
-        }
     }
-
 }
