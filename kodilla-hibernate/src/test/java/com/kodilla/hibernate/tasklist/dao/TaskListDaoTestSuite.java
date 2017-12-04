@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import java.math.BigDecimal;
+import java.util.List;
 
 
 @RunWith(SpringRunner.class)
@@ -22,24 +23,24 @@ public class TaskListDaoTestSuite {
     private TaskListDao taskListDao;
     private static final String DESCRIPTION = "ToDo tasks";
 
-//    @Test
-//    public void Should_HaveOneTaskList_When_FindByListNameIsUsed() {
-//
-//        //Given
-//        TaskList taskList = new TaskList(LISTNAME, DESCRIPTION);
-//        taskListDao.save(taskList);
-//        String listName = taskList.getListName();
-//
-//        //When
-//        List<TaskList> theTaskList = taskListDao.findByListName(listName);
-//
-//        //Then
-//        Assert.assertEquals(2, theTaskList.size());
-//
-//        //CleanUp
-//        int id = theTaskList.get(0).getId();
-//        taskListDao.delete(id);
-//    }
+    @Test
+    public void Should_HaveOneTaskList_When_FindByListNameIsUsed() {
+
+        //Given
+        TaskList taskList = new TaskList(LISTNAME, DESCRIPTION);
+        taskListDao.save(taskList);
+        String listName = taskList.getListName();
+
+        //When
+        List<TaskList> theTaskList = taskListDao.findByListName(listName);
+
+        //Then
+        Assert.assertEquals(1, theTaskList.size());
+
+        //CleanUp
+        int id = theTaskList.get(0).getId();
+        taskListDao.delete(id);
+    }
 
     @Test
     public void testTaskListDaoSaveWithTasks() {
