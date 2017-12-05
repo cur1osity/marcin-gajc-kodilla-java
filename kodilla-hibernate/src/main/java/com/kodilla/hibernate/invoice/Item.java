@@ -28,7 +28,7 @@ public class Item {
     @Column(name = "VALUE")
     private BigDecimal value;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 
