@@ -18,7 +18,6 @@ import java.math.BigDecimal;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Rollback(false)
 public class InvoiceDaoTestSuite {
 
     @Autowired
