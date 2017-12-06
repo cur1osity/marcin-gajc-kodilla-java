@@ -1,6 +1,5 @@
 package com.kodilla.hibernate.invoice;
 
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;

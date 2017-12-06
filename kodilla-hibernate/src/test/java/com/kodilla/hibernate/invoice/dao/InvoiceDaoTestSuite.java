@@ -11,6 +11,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.math.BigDecimal;
 
 @RunWith(SpringRunner.class)
@@ -18,51 +20,40 @@ import java.math.BigDecimal;
 public class InvoiceDaoTestSuite {
 
     @Autowired
+    private ItemDao itemDao;
+
+    @Autowired
+    private ProductDao productDao;
+
+    @Autowired
     private InvoiceDao invoiceDao;
 
     @Test
     public void testInvoiceDaoSave(){
+        itemDao.deleteAll();
+        productDao.deleteAll();
+        invoiceDao.deleteAll();
 
         Product product1 = new Product("Pencil");
-        Product product2 = new Product("Pencil");
+        Product managedProduct = productDao.save(product1);
 
         Item item1 = new Item(1,new BigDecimal("100"));
         Item item2 = new Item(2,new BigDecimal("100"));
-
-        item1.setProduct(product1);
-        item2.setProduct(product1);
-
+//
+        item1.setProduct(managedProduct);
+        item2.setProduct(managedProduct);
+//
         Invoice invoice1 = new Invoice("123");
-     //   Invoice invoice2 = new Invoice("xyz");
-
+        Invoice invoice2 = new Invoice("xyz");
+//
         invoice1.getItems().add(item1);
-        invoice1.getItems().add(item2);
-
-      //  invoice2.getItems().add(item2);
-
-
+        invoice2.getItems().add(item2);
+//
         item1.setInvoice(invoice1);
         item2.setInvoice(invoice1);
-
+//
         invoiceDao.save(invoice1);
-     //   invoiceDao.save(invoice2);
+        invoiceDao.save(invoice2);
 
     }
-
-//    @Test
-//    public void testInvoiceDaoSave2(){
-//
-//        Item item2 = new Item(3, new BigDecimal("100"));
-//
-//        item2.setProduct(product);
-//
-//        Invoice invoice2 = new Invoice("xyz");
-//
-//        invoice2.getItems().add(item2);
-//
-//        item2.setInvoice(invoice2);
-//
-//        invoiceDao.save(invoice2);
-//
-//    }
 }
