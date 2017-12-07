@@ -4,6 +4,12 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.annotations.NamedQuery;
+
+@NamedQuery(
+        name = "Employee.retrieveEmployeeWithSpecificLastName",
+        query = "FROM Employee WHERE lastname = :LASTNAME"
+)
 
 @Entity
 @Table(name = "EMPLOYEES")

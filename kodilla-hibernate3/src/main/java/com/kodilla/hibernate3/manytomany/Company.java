@@ -4,6 +4,14 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.annotations.NamedNativeQuery;
+
+
+@NamedNativeQuery(
+        name = "Company.retrieveCompaniesWithSpecificNames",
+        query = "SELECT * FROM companies WHERE company_name LIKE :NAME",
+        resultClass = Company.class
+)
 
 @Entity
 @Table(name = "COMPANIES")

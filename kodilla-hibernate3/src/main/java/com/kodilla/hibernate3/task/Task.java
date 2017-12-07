@@ -18,6 +18,10 @@ import org.hibernate.annotations.NamedNativeQuery;
         @NamedQuery(
                 name = "Task.retrieveShortTasks",
                 query = "FROM Task WHERE duration <= 10"
+        ),
+        @NamedQuery(
+                name = "Task.retrieveTaskWithDurationLongerThan",
+                query = "FROM Task WHERE duration > :DURATION"
         )
 })
 
