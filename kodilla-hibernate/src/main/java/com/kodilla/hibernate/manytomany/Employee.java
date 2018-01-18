@@ -4,13 +4,17 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.NamedQuery;
 
 @NamedQuery(
         name = "Employee.retrieveEmployeeWithSpecificLastName",
-        query = "FROM Employee WHERE lastname = :LASTNAME"
+        query = "FROM Employee WHERE lastname LIKE :LASTNAME"
 )
 
+@NoArgsConstructor
+@Setter
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
@@ -19,8 +23,6 @@ public class Employee {
     private String lastname;
     private List<Company> companies = new ArrayList<>();
 
-    public Employee() {
-    }
 
     public Employee(String firstname, String lastname) {
         this.firstname = firstname;
@@ -28,17 +30,8 @@ public class Employee {
     }
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "employees")
-//    @JoinTable(
-//            name = "JOIN_COMPANY_EMPLOYEE",
-//            joinColumns = {@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID")},
-//            inverseJoinColumns = {@JoinColumn(name = "COMPANY_ID", referencedColumnName = "COMPANY_ID")}
-//    )
     public List<Company> getCompanies() {
         return companies;
-    }
-
-    public void setCompanies(List<Company> companies) {
-        this.companies = companies;
     }
 
     @Id
@@ -59,17 +52,5 @@ public class Employee {
     @Column(name = "LASTNAME")
     public String getLastname() {
         return lastname;
-    }
-
-    private void setId(int id) {
-        this.id = id;
-    }
-
-    private void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    private void setLastname(String lastname) {
-        this.lastname = lastname;
     }
 }

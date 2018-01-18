@@ -4,24 +4,23 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.NamedNativeQuery;
-
 
 @NamedNativeQuery(
         name = "Company.retrieveCompaniesWithSpecificNames",
         query = "SELECT * FROM companies WHERE company_name LIKE :NAME",
         resultClass = Company.class
 )
-
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
     private int id;
     private String name;
     private List<Employee> employees = new ArrayList<>();
-
-    public Company() {
-    }
 
     public Company(String name) {
         this.name = name;
@@ -30,10 +29,6 @@ public class Company {
     @ManyToMany(cascade = CascadeType.ALL)
     public List<Employee> getEmployees() {
         return employees;
-    }
-
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
     }
 
     @Id
@@ -50,11 +45,4 @@ public class Company {
         return name;
     }
 
-    private void setId(int id) {
-        this.id = id;
-    }
-
-    private void setName(String name) {
-        this.name = name;
-    }
 }
