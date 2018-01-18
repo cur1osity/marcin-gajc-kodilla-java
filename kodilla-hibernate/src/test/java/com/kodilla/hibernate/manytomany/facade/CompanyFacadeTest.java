@@ -3,7 +3,6 @@ package com.kodilla.hibernate.manytomany.facade;
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
 import com.kodilla.hibernate.manytomany.dao.CompanyDao;
-import com.kodilla.hibernate.manytomany.dao.EmployeeDao;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,12 +26,6 @@ public class CompanyFacadeTest {
     @Autowired
     private CompanyDao companyDao;
 
-//    @Autowired
-//    private EmployeeDao employeeDao;
-
-    private Company softwareMachine;
-    private Company dataMaesters;
-    private Company greyMatter;
 
     @Before
     public void databaseSetup() {
@@ -41,9 +34,9 @@ public class CompanyFacadeTest {
         Employee johnDoe = new Employee("John", "Doe");
         Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
 
-        softwareMachine = new Company("Software Machine");
-        dataMaesters = new Company("Data Maesters");
-        greyMatter = new Company("Grey Matter");
+        Company softwareMachine = new Company("Software Machine");
+        Company dataMaesters = new Company("Data Maesters");
+        Company greyMatter = new Company("Grey Matter");
 
         softwareMachine.getEmployees().add(johnSmith);
         dataMaesters.getEmployees().add(johnDoe);
@@ -64,7 +57,7 @@ public class CompanyFacadeTest {
     }
 
     @Test
-    public void searchCompanyDao() {
+    public void Should_retrieve3Company_When_searchCompanyAndFacadeIsUsed() {
         // Given
         // When
         List<Company> resultList = companyFacade.searchCompany("Ma");
@@ -74,7 +67,7 @@ public class CompanyFacadeTest {
     }
 
     @Test
-    public void searchEmployeeDao() {
+    public void Should_retrieve1Employee_When_searchEmployeeAndFacadeIsUsed() {
         //  Given
         //  When
         List<Employee> resultList = companyFacade.searchEmployee("sky");
