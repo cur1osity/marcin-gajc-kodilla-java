@@ -11,6 +11,6 @@ public class BasicPizza implements PizzaOrder {
 
     @Override
     public String getPizzaDescription() {
-        return "Mozzarella , tomato sauce";
+        return "Mozzarella, tomato sauce";
     }
 }
