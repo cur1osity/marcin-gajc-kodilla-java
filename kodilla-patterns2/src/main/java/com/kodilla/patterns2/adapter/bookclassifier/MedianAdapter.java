@@ -8,15 +8,18 @@ import java.util.*;
 
 public class MedianAdapter extends MedianAdaptee implements Classifier {
 
+
     @Override
     public int publicationYearMedian(Set<OldBook> oldBookSet) {
+
         Map<BookSignature, NewBook> books = new HashMap<>();
 
         for (OldBook oldBook : oldBookSet) {
-           books.put(new BookSignature(oldBook.getSignature()),
-                   new NewBook(oldBook.getAuthor(),
-                           oldBook.getTitle(),
-                           oldBook.getPublicationYear()));
+
+            BookSignature bookSignature = new BookSignature(oldBook.getSignature());
+            NewBook newBook = new NewBook(oldBook.getAuthor(), oldBook.getTitle(), oldBook.getPublicationYear());
+
+            books.put(bookSignature, newBook);
         }
         return medianPublicationYear(books);
     }
