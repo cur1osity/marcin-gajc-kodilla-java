@@ -5,9 +5,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.Random;
@@ -56,6 +54,7 @@ public class CrudAppTestSuite {
         String taskName = createCrudAppTestTask();
         sendTestTaskToTrello(taskName);
         Assert.assertTrue(checkTaskExistsInTrello(taskName));
+        Assert.assertFalse(deleteTaskAfterTest(taskName));
 
     }
 
@@ -77,6 +76,7 @@ public class CrudAppTestSuite {
                     buttonCreateCard.click();
                 });
         Thread.sleep(5000);
+
     }
 
     private boolean checkTaskExistsInTrello(String taskName) throws InterruptedException {
@@ -106,6 +106,35 @@ public class CrudAppTestSuite {
         driverTrello.close();
 
         return result;
+    }
 
+    private boolean deleteTaskAfterTest(String taskName) throws InterruptedException {
+
+        boolean result = false;
+
+        try {
+            driver.get(BASE_URL);
+        } catch (UnhandledAlertException ex) {
+            Alert alert = driver.switchTo().alert();
+            alert.accept();
+        }
+
+        while(!driver.findElement(By.xpath("//select[1]")).isDisplayed());
+
+        driver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
+                .filter(anyForm -> anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]"))
+                        .getText().equals(taskName))
+                .forEach(theForm -> {
+                    theForm.findElement(By.xpath(".//button[text()='Delete']")).click();
+                });
+
+        Thread.sleep(2000);
+
+        result = driver.findElements(By.xpath(".//p[@class=\"datatable__field-value\"]")).stream()
+                .filter(fieldValue -> fieldValue.getText().contains(taskName))
+                .collect(Collectors.toList())
+                .size() > 0;
+
+        return result;
     }
 }
